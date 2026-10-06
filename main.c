@@ -14,9 +14,23 @@ void ex1() {
 	}
 }
 
+void ex2() {
+	static const char* text[] = {
+		"     *",
+		"    ***",
+		"***********",
+		"   *****",
+		"  **   **",
+		" *       *",
+	};
+	for (unsigned char i = 0; i < sizeof(text) / sizeof(text[0]); ++i) {
+		printf("%s\n", text[i]);
+	}
+}
+
 int main(int argc, const char* argv[]) {
 	printf("Praised be to the mashine!\n");
 
-	ex1();
+	ex2();
 	return 0;
 }
