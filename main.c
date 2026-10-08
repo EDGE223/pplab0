@@ -35,7 +35,7 @@ void ex3() {
 	const char* data[][3] = {
 		{ "1", "Jan", "Kowalski" },
 		{ "2", "Anna", "Nowak" },
-		{ "3", "Piotr", "Wiúniewski" },
+		{ "3", "Piotr", "Wi≈õniewski" },
 	};
 
 	size_t widths[] = {0, 0, 0};
@@ -65,7 +65,7 @@ void ex3() {
 }
 
 int main(int argc, const char* argv[]) {
-	printf("Praised be to the mashine!\n");
+	printf("Praised be to the machine!\n");
 
 	ex3();
 	return 0;
