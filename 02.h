@@ -178,8 +178,8 @@ void ex15() {
 	printf("enter 2 natural numbers (n, m) ");
 	(void)scanf("%d %d", &n, &m);
 
-	const minimum_number = 0;
-	const max_number = m;
+	const int minimum_number = 0;
+	const int max_number = m;
 
 	srand((unsigned)time(NULL));
 
@@ -190,15 +190,15 @@ void ex15() {
 		// Source - https://stackoverflow.com/a/1202706
 		// Posted by Tyler McHenry, modified by community. See post 'Timeline' for change history
 		// Retrieved 2026-10-13, License - CC BY-SA 3.0
-		const rnd = rand() % (max_number + 1 - minimum_number) + minimum_number;
+		const int rnd = rand() % (max_number + 1 - minimum_number) + minimum_number;
 
 		printf("%3d%c", rnd, i % (n / 10) == 0 ? '\n' : ' ');
 	}
 }
 
 void ex16() {
-	const minimum_number = 0;
-	const max_number = 10;
+	const int minimum_number = 0;
+	const int max_number = 10;
 
 	int luckynumber;
 	int luckycount = 0;
@@ -209,7 +209,7 @@ void ex16() {
 	srand((unsigned)time(NULL));
 
 	for (int i = 0; i < 10; i++) {
-		const rnd = rand() % (max_number + 1 - minimum_number) + minimum_number;
+		const int rnd = rand() % (max_number + 1 - minimum_number) + minimum_number;
 		if(rnd == luckynumber) {
 			luckycount++;
 		}
