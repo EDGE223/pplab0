@@ -1,6 +1,9 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
 #include <math.h>
 
 void ex1() {
@@ -164,5 +167,127 @@ void ex11() {
 	int year;
 	printf("year? ");
 	(void)scanf("%d", &year);
-	/*printf("the year %d is%syear\n", year % 4 == 0);*/
+	printf("the year %d is%s leap year\n", year, (year % 4 == 0 && year % 100 != 0 || year % 4 == 0 && year % 400 == 0) ? "" : "n't a");
+}
+
+void ex12() {
+	int option;
+	printf(
+		"1. Start\n"
+		"2. Settings\n"
+		"3. Help\n"
+		"4. End\n"
+		"> "
+	);
+	(void)scanf("%d", &option);
+	printf("Selected ");
+	switch (option) {
+	case 1: printf("Start"); break;
+	case 2: printf("Settings"); break;
+	case 3: printf("Help"); break;
+	case 4: printf("End"); break;
+	default: printf("Undefined option"); break;
+	}
+	printf("\n");
+}
+
+void ex13() {
+	int option;
+	printf("Enter a grade: ");
+	(void)scanf("%d", &option);
+	switch (option) {
+	case 1: printf("(F) Failing"); break;
+	case 2: printf("(D) Below average"); break;
+	case 3: printf("(C) Average"); break;
+	case 4: printf("(B) Good"); break;
+	case 5: printf("(A) Excellent"); break;
+	default: printf("(E) Entered grade is incorrect"); break;
+	}
+	printf("\n");
+}
+
+void ex14() {
+	size_t sum = 0;
+	for (size_t i = 0; i < 100; i++) {
+		if (i % 3) sum += i;
+		else continue;
+	}
+	printf("sum of elements not divisable by 3 is %llu\n", sum);
+}
+
+void ex15() {
+	for (size_t i = 1; i < 1000; i++) {
+		if (i > 50 && i % 7 == 0) {
+			printf("%llu\n", i); break;
+		}
+	}
+}
+
+void ex16() {
+	for (size_t lhs = 1; lhs <= 10; lhs++) {
+		if (lhs == 1) {
+			printf("    ");
+			for (size_t i = 1; i <= 10; i++) printf("%3llu%c", i, i % 10 ? ' ' : '\n');
+		}
+		printf("%3llu ", lhs);
+		for (size_t rhs = 1; rhs <= 10; rhs++) {
+			printf("%3llu%c", lhs * rhs, rhs % 10 ? ' ' : '\n');
+		}
+	}
+}
+
+void ex17() {
+	size_t num;
+	printf("> ");
+	(void)scanf("%llu", &num);
+	unsigned i = 1;
+	while (num > 10) {
+		num /= 10;
+		i++;
+	}
+	printf("%u\n", i);
+}
+
+void ex18() {
+	int n, isPrime = 1;
+	printf("num: ");
+	(void)scanf("%d", &n);
+
+	for (int i = 2; i < sqrt((double)n); i++) {
+		if (n % i == 0) {
+			isPrime = 0; break;
+		}
+	}
+
+	printf("%d is%sprime\n", n, isPrime ? " " : "n't ");
+}
+
+void ex19() {
+	int option;
+	do {
+		printf(
+			"1. Start\n"
+			"2. Settings\n"
+			"3. Help\n"
+			"4. End\n"
+			"> "
+		);
+		(void)scanf("%d", &option);
+		printf("Selected ");
+		switch (option) {
+		case 1: printf("Start"); break;
+		case 2: printf("Settings"); break;
+		case 3: printf("Help"); break;
+		case 4: printf("End"); break;
+		default: printf("Undefined option"); break;
+		}
+		printf("\n");
+	} while (!(option >= 1 && option <= 4));
+}
+
+void ex20() {
+	float s = 0;
+	for (unsigned char i = 0; s <= 10; i++, s += 0.1f) {
+		printf("#%u iteration s = %g\n", i, s);
+	}
 }
