@@ -1,8 +1,8 @@
-#include "03.h"
+#include "04.h"
 
 int main(int argc, const char* argv[]) {
 	printf("Praised be to the machine!\n");
 
-	ex20();
+	ex14();
 	return 0;
 }
