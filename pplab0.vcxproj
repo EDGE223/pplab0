@@ -129,10 +129,12 @@
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="05.h" />
     <ClInclude Include="01.h" />
     <ClInclude Include="02.h" />
     <ClInclude Include="03.h" />
     <ClInclude Include="04.h" />
+    <ClInclude Include="libhs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

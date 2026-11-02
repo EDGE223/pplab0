@@ -32,5 +32,11 @@
     <ClInclude Include="04.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="05.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="libhs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

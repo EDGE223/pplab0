@@ -2,6 +2,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdint.h>
+#include <time.h>
 #include <math.h>
 
 void ex1() {
@@ -195,4 +197,60 @@ size_t ex14() {
 		a--;
 	}
 	return res;
+}
+
+void ex15() {
+	unsigned n;
+	(void)scanf("%u", &n);
+	uint64_t r = 1;
+	for (size_t i = 0; i < n; i++) {
+		r *= 2;
+	}
+	printf("%zu\n", r);
+	printf("%lg\n", powl(2, n));
+}
+
+void ex16() {
+	uint32_t happy, hno = 0;
+	do {
+		printf("[1-10] > ");
+		(void)scanf("%u", &happy);
+	} while (happy > 10);
+
+	srand((unsigned)time(NULL));
+
+	for (size_t i = 0; i < 10; i++) {
+		const int max_number = 10, minimum_number = 1;
+		const int rnd = rand() % (max_number + 1 - minimum_number) + minimum_number;
+		printf("rnd: %d\n", rnd);
+		if (rnd == happy) {
+			hno++;
+		}
+	}
+	printf("Happy number occurred %u/10 times taking %u percent of time\n", hno, hno * 10);
+}
+
+unsigned ex17a(unsigned n) {
+	return (n - 1) / 2;
+}
+
+unsigned ex17b(unsigned n) {
+	return n / 2;
+}
+
+void ex17() {
+	for (unsigned i = 0; i < 100; i++) {
+		(i % 2 ? ex17a : ex17b)(i);
+	}
+}
+
+int ex18(int n) {
+	printf("Will return %s%d\n", n % 6 == 0 ? "" : n % 3 == 0 ? "cube of " : n % 2 == 0 ? "square of " : "just ", n % 6 == 0 ? 0 : n);
+	return n % 6 == 0
+		? 0
+		: n % 3 == 0
+		? n * n * n
+		: n % 2 == 0
+		? n * n
+		: n;
 }
