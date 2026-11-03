@@ -3,6 +3,6 @@
 int main(int argc, const char* argv[]) {
 	printf("Praised be to the machine!\n");
 
-	ex4();
+	ex8();
 	return 0;
 }

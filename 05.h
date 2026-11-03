@@ -91,3 +91,117 @@ void ex3() {
 
 	free(mapped);
 }
+
+void ex4add(double* acc, const unsigned* cur) {
+	*acc += (double)*cur;
+}
+
+void ex4() {
+	uint32_t n;
+	do {
+		printf("n > ");
+		(void)scanf("%u", &n);
+	} while(n > 10);
+	uint32_t num[10] = { 0 };
+	for (uint32_t i = 0; i < n; i++) {
+		do {
+			printf("%2d/%2d> ", i + 1, n);
+			(void)scanf("%u", &num[i]);
+		} while (num[i] > 10);
+	}
+
+	double average = 0;
+	hsFold(num, 10, ex4add, &average);
+	average /= 10;
+
+	unsigned minValue = num[0], maxValue = num[0];
+	hsFold(num, 10, ex3d, &minValue);
+	hsFold(num, 10, ex3e, &maxValue);
+
+	printf("avg: %lg, min: %u, max: %u\n", average, minValue, maxValue);
+}
+
+unsigned ex5happy;
+void ex5a(unsigned* dst, const unsigned* src) {
+	const int max_number = 10, minimum_number = 1;
+	const int rnd = rand() % (max_number + 1 - minimum_number) + minimum_number;
+	*dst = (unsigned)rnd;
+}
+
+bool ex5b(const unsigned* cur) {
+	return *cur == ex5happy;
+}
+
+void ex5() {
+	const unsigned count = 10;
+	srand((unsigned)time(NULL));
+	unsigned* mapped = hsMap((unsigned*)nullptr, count, ex5a);
+
+	const int max_number = 10, minimum_number = 1;
+	ex5happy = (unsigned)(rand() % (max_number + 1 - minimum_number) + minimum_number);
+
+	const HsArray filteredResult = hsFilter(mapped, count, ex5b);
+	printf("happy number occured %zu times\n", filteredResult.len);
+
+	hsFree(filteredResult);
+	free(mapped);
+}
+
+void ex6() {
+#define countof(x) (sizeof((x))/sizeof(typeof((x))))
+
+	int32_t a[3][3] = {
+		{1, 2, 3},
+		{1, 2, 3},
+		{1, 2, 3},
+	};
+
+	int32_t b[3][3] = {
+		{1, 2, 3},
+		{1, 2, 3},
+		{1, 2, 3},
+	};
+
+	typeof(a) c;
+
+	for (uint32_t y = 0; y < countof(a); y++) {
+		for (uint32_t x = 0; x < countof(a[0]); x++) {
+			c[y][x] = a[y][x] + b[y][x];
+		}
+	}
+#undef countof
+}
+
+void ex8() {
+#define mtxcoord(mtx, w, i, j) mtx[w*j+i]
+	unsigned n;
+	printf("n > ");
+	(void)scanf("%u", &n);
+
+	unsigned* a = malloc(sizeof(unsigned) * n * n);
+	if (a != nullptr) {
+		for (unsigned i = 0; i < n; i++) {
+			for (unsigned j = 0; j < n; j++) {
+				printf("a %d %d > ", i, j);
+				(void)scanf("%u", &mtxcoord(a, n, i, j));
+			}
+		}
+
+		unsigned sum = 0;
+		for (unsigned i = 0; i < n; i++) {
+			sum += mtxcoord(a, n, i, i);
+		}
+
+		printf("%u\n", sum);
+
+		free(a);
+	}
+#undef mtxcoord
+}
+
+void ex9() {
+	uint32_t n;
+	printf("n > ");
+	(void)scanf("%s", &n);
+	int32_t* num = malloc(n*sizeof(int32_t));
+}
